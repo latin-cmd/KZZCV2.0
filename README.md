@@ -1,190 +1,190 @@
-# KZZCV2.0 项目说明文档
+# KZZCV2.0 Project Documentation
+CN: [[README_CN.md]] EN: [[README.md]]
+## Project Overview
+KZZCV2.0 is an embedded GUI project based on the LVGL graphics library and FreeRTOS real-time operating system. The project adopts a modular design, supports multiple hardware platforms, and provides rich user interfaces and functionalities.
 
-## 项目概述
-KZZCV2.0是一个基于LVGL图形库和FreeRTOS实时操作系统的嵌入式GUI项目。该项目采用模块化设计，支持多种硬件平台，提供丰富的用户界面和功能。
-
-## 目录结构
+## Directory Structure
 ```
 src/
-├── core/                 # 核心功能模块
-│   ├── main.c           # 主程序入口
-│   └── tasks.h          # 任务定义和配置
-├── ui/                   # 用户界面模块
-│   ├── main/            # 主界面
-│   ├── settings/        # 设置界面
-│   ├── uart/            # 串口界面
-│   ├── chart/           # 图表界面
-│   ├── usb/             # USB界面
-│   └── common/          # 公共UI组件
-├── drivers/             # 硬件驱动模块
-│   ├── lcd/             # LCD驱动
-│   ├── touch/           # 触摸驱动
-│   └── adc/             # ADC驱动
-├── middleware/          # 中间件模块
-│   ├── lvgl/            # LVGL中间件
-│   └── usb/             # USB中间件
-└── utils/               # 工具模块
-    └── malloc/          # 内存管理
+├── core/                 # Core functionality module
+│   ├── main.c           # Main program entry
+│   └── tasks.h          # Task definitions and configurations
+├── ui/                   # User interface module
+│   ├── main/            # Main interface
+│   ├── settings/        # Settings interface
+│   ├── uart/            # UART interface
+│   ├── chart/           # Chart interface
+│   ├── usb/             # USB interface
+│   └── common/          # Common UI components
+├── drivers/             # Hardware driver module
+│   ├── lcd/             # LCD driver
+│   ├── touch/           # Touch driver
+│   └── adc/             # ADC driver
+├── middleware/          # Middleware module
+│   ├── lvgl/            # LVGL middleware
+│   └── usb/             # USB middleware
+└── utils/               # Utility module
+    └── malloc/          # Memory management
 ```
 
-## 模块说明
+## Module Description
 
-### 1. 核心模块 (core)
-- **main.c**: 主程序入口，负责系统初始化和任务创建
-  - 系统时钟配置
-  - 外设初始化
-  - FreeRTOS任务创建
-  - 系统调度启动
-- **tasks.h**: 任务定义和配置
-  - 任务优先级定义
-  - 任务栈大小配置
-  - 任务句柄声明
-  - 队列句柄声明
+### 1. Core Module (core)
+- **main.c**: Main program entry, responsible for system initialization and task creation
+  - System clock configuration
+  - Peripheral initialization
+  - FreeRTOS task creation
+  - System scheduler startup
+- **tasks.h**: Task definitions and configurations
+  - Task priority definitions
+  - Task stack size configurations
+  - Task handle declarations
+  - Queue handle declarations
 
-### 2. 用户界面模块 (ui)
-- **main_ui**: 主界面模块
-  - 主界面布局
-  - 状态栏显示
-  - 导航按钮
-  - 时间日期显示
-- **settings_ui**: 设置界面模块
-  - 系统信息显示
-  - 硬件信息显示
-  - 软件信息显示
-  - 关于信息显示
-- **uart_ui**: 串口界面模块
-  - 串口参数配置
-  - 数据收发显示
-  - 数据格式设置
-  - 波特率设置
-- **chart_ui**: 图表界面模块
-  - 温度曲线显示
-  - 柱状图显示
-  - 数据缩放控制
-  - 数据清除功能
-- **usb_ui**: USB界面模块
-  - USB连接状态显示
-  - USB数据传输
-  - USB设备管理
+### 2. User Interface Module (ui)
+- **main_ui**: Main interface module
+  - Main interface layout
+  - Status bar display
+  - Navigation buttons
+  - Time and date display
+- **settings_ui**: Settings interface module
+  - System information display
+  - Hardware information display
+  - Software information display
+  - About information display
+- **uart_ui**: UART interface module
+  - UART parameter configuration
+  - Data transmission display
+  - Data format settings
+  - Baud rate settings
+- **chart_ui**: Chart interface module
+  - Temperature curve display
+  - Bar chart display
+  - Data scaling control
+  - Data clear function
+- **usb_ui**: USB interface module
+  - USB connection status display
+  - USB data transmission
+  - USB device management
 
-### 3. 驱动模块 (drivers)
-- **lcd**: LCD驱动模块
-  - LCD初始化
-  - 显示缓冲区管理
-  - 显示刷新控制
-  - 显示区域设置
-- **touch**: 触摸驱动模块
-  - 触摸初始化
-  - 触摸数据读取
-  - 触摸事件处理
-  - 触摸坐标转换
-- **adc**: ADC驱动模块
-  - ADC初始化
-  - 数据采集控制
-  - 温度计算
-  - 数据转换
+### 3. Driver Module (drivers)
+- **lcd**: LCD driver module
+  - LCD initialization
+  - Display buffer management
+  - Display refresh control
+  - Display area settings
+- **touch**: Touch driver module
+  - Touch initialization
+  - Touch data reading
+  - Touch event handling
+  - Touch coordinate conversion
+- **adc**: ADC driver module
+  - ADC initialization
+  - Data acquisition control
+  - Temperature calculation
+  - Data conversion
 
-### 4. 中间件模块 (middleware)
-- **lvgl**: LVGL中间件
-  - LVGL初始化
-  - 显示设备管理
-  - 输入设备管理
-  - 定时器管理
-- **usb**: USB中间件
-  - USB设备初始化
-  - 数据传输管理
-  - 设备状态监控
-  - 中断处理
+### 4. Middleware Module (middleware)
+- **lvgl**: LVGL middleware
+  - LVGL initialization
+  - Display device management
+  - Input device management
+  - Timer management
+- **usb**: USB middleware
+  - USB device initialization
+  - Data transmission management
+  - Device status monitoring
+  - Interrupt handling
 
-### 5. 工具模块 (utils)
-- **malloc**: 内存管理模块
-  - 内存池管理
-  - 内存分配
-  - 内存释放
-  - 内存使用统计
+### 5. Utility Module (utils)
+- **malloc**: Memory management module
+  - Memory pool management
+  - Memory allocation
+  - Memory deallocation
+  - Memory usage statistics
 
-## 框架说明
+## Framework Description
 
-### 1. LVGL图形库
-- 版本要求：LVGL 8.x
-- 功能特性：
-  - 丰富的UI组件
-  - 支持动画效果
-  - 支持主题定制
-  - 支持多语言
-  - 支持触摸输入
-  - 支持键盘输入
+### 1. LVGL Graphics Library
+- Version requirement: LVGL 8.x
+- Features:
+  - Rich UI components
+  - Animation support
+  - Theme customization
+  - Multi-language support
+  - Touch input support
+  - Keyboard input support
 
-### 2. FreeRTOS实时操作系统
-- 版本要求：FreeRTOS 10.x
-- 功能特性：
-  - 任务管理
-  - 内存管理
-  - 队列管理
-  - 信号量管理
-  - 定时器管理
-  - 中断管理
+### 2. FreeRTOS Real-Time Operating System
+- Version requirement: FreeRTOS 10.x
+- Features:
+  - Task management
+  - Memory management
+  - Queue management
+  - Semaphore management
+  - Timer management
+  - Interrupt management
 
-## 硬件要求
+## Hardware Requirements
 
-### 1. 推荐MCU型号
-- STM32F4系列
+### 1. Recommended MCU Models
+- STM32F4 Series
   - STM32F407ZGT6
   - STM32F429ZIT6
   - STM32F469ZIT6
-- STM32H7系列
+- STM32H7 Series
   - STM32H743ZIT6
   - STM32H750ZBT6
 
-### 2. 性能要求
-- CPU主频：≥168MHz
-- RAM：≥128KB
-- Flash：≥512KB
-- 外部RAM：≥8MB（可选）
+### 2. Performance Requirements
+- CPU frequency: ≥168MHz
+- RAM: ≥128KB
+- Flash: ≥512KB
+- External RAM: ≥8MB (optional)
 
-### 3. 外设要求
-- LCD接口：RGB/8080/SPI
-- 触摸接口：I2C/SPI
-- USB接口：USB 2.0 Full Speed
-- ADC：12位分辨率
-- UART：至少2个
+### 3. Peripheral Requirements
+- LCD interface: RGB/8080/SPI
+- Touch interface: I2C/SPI
+- USB interface: USB 2.0 Full Speed
+- ADC: 12-bit resolution
+- UART: At least 2
 
-### 4. 显示要求
-- 分辨率：≥480x320
-- 色深：≥16位
-- 刷新率：≥60Hz
-- 触摸：支持多点触控
+### 4. Display Requirements
+- Resolution: ≥480x320
+- Color depth: ≥16-bit
+- Refresh rate: ≥60Hz
+- Touch: Multi-touch support
 
-## 编译和运行
+## Compilation and Running
 
-### 1. 开发环境
-- IDE：Keil MDK 5.x
-- 编译器：ARMCC 5.x
-- 调试器：ST-Link V2
+### 1. Development Environment
+- IDE: Keil MDK 5.x
+- Compiler: ARMCC 5.x
+- Debugger: ST-Link V2
 
-### 2. 编译步骤
-1. 打开项目工程文件
-2. 配置目标MCU型号
-3. 配置编译选项
-4. 编译项目
-5. 下载程序
+### 2. Compilation Steps
+1. Open project file
+2. Configure target MCU model
+3. Configure compilation options
+4. Compile project
+5. Download program
 
-### 3. 运行要求
-- 确保硬件连接正确
-- 确保电源供应稳定
-- 确保调试器连接正常
-- 确保LCD和触摸屏工作正常
+### 3. Running Requirements
+- Ensure correct hardware connections
+- Ensure stable power supply
+- Ensure debugger connection is normal
+- Ensure LCD and touch screen are working properly
 
-## 注意事项
-1. 首次使用需要配置系统时钟
-2. 需要正确配置外设引脚
-3. 需要正确配置中断优先级
-4. 需要正确配置FreeRTOS参数
-5. 需要正确配置LVGL参数
+## Notes
+1. System clock configuration required for first use
+2. Correct peripheral pin configuration required
+3. Correct interrupt priority configuration required
+4. Correct FreeRTOS parameter configuration required
+5. Correct LVGL parameter configuration required
 
-## 维护和更新
-1. 定期检查代码更新
-2. 定期更新依赖库
-3. 定期进行代码优化
-4. 定期进行性能测试
-5. 定期进行稳定性测试
+## Maintenance and Updates
+1. Regular code update checks
+2. Regular dependency library updates
+3. Regular code optimization
+4. Regular performance testing
+5. Regular stability testing
